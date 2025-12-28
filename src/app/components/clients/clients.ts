@@ -13,7 +13,7 @@ import { RouterModule } from '@angular/router';
 export class Clients {
   private readonly clientService = inject(ClientService);
   public clients = toSignal(this.clientService.getClients(), { initialValue: [] });
-  totalOwed = computed(() => {
+  public totalOwed = computed(() => {
     const clients = this.clients();
     return clients.reduce((total, client) => total + Number(client.balance), 0);
   });

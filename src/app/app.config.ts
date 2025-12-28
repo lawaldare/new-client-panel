@@ -10,7 +10,6 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
-import { FlashMessagesModule } from 'angular2-flash-messages';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,8 +18,7 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(
       AngularFireModule.initializeApp(environment.firebase),
       AngularFirestoreModule,
-      AngularFireAuthModule,
-      FlashMessagesModule.forRoot()
+      AngularFireAuthModule
     ),
   ],
 };

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Settings } from '../models/settings';
+import { ISettings } from '../models/settings';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SettingsService {
-  settings: Settings = {
+  settings: ISettings = {
     allowRegistration: true,
     disableBalanceOnAdd: true,
     disableBalanceOnEdit: true,
@@ -17,11 +17,11 @@ export class SettingsService {
     }
   }
 
-  public getSettings(): Settings {
+  public getSettings(): ISettings {
     return this.settings;
   }
 
-  public changeSettings(settings: Settings) {
+  public changeSettings(settings: ISettings) {
     localStorage.setItem('settings', JSON.stringify(settings));
   }
 }

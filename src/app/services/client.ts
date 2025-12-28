@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
@@ -21,7 +21,6 @@ export class ClientService {
     this.clientsCollection = this.afs.collection('clients', (ref) =>
       ref.orderBy('lastName', 'asc')
     );
-    console.log('Client Service Initialized...', this.clientsCollection);
   }
 
   public getClients(): Observable<Client[]> {
@@ -41,9 +40,8 @@ export class ClientService {
     this.clientsCollection.add(req);
   }
 
-  getClient(id: string): Observable<Client | null> {
+  public getClient(id: string): Observable<Client | null> {
     this.clientDoc = this.afs.doc<Client>(`clients/${id}`);
-    console.log(this.clientDoc);
     this.client = this.clientDoc.snapshotChanges().pipe(
       map((action) => {
         if (action.payload.exists === false) {
@@ -65,7 +63,7 @@ export class ClientService {
     this.clientDoc.update(client);
   }
 
-  deleteClient(client: Client) {
+  public deleteClient(client: Client) {
     this.clientDoc = this.afs.doc(`clients/${client.id}`);
     this.clientDoc.delete();
   }

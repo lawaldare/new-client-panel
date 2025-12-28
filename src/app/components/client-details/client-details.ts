@@ -48,7 +48,7 @@ export class ClientDetails {
   }
 
   public updateBalance() {
-    this.client.update((c) => ({ ...c, balance: this.balance }));
+    this.client.update((c) => ({ ...c, balance: +this.balance }));
     this.cs.updateClient(this.client() ?? {});
     // this.fm.show('Balance updated!', {
     //   cssClass: 'alert-success', timeout: 4000
